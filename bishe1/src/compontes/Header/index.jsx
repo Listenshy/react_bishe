@@ -1,13 +1,21 @@
 import { DownOutlined } from "@ant-design/icons";
 import { Layout, Menu, Dropdown, Space } from "antd";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Head() {
   const { Header } = Layout;
+  const Navigate = useNavigate();
   // 头部
+
   const handleMenuClick = (e) => {
-    console.log(e);
-    // console.log(menu);
+    e.item.props.demo(e);
+  };
+  const out = () => {
+    Navigate("/login")
+  };
+  const change = () => {
+    console.log(222);
   };
   const menu = (
     <Menu
@@ -15,10 +23,12 @@ export default function Head() {
         {
           label: "推出登录",
           key: "0",
+          demo: out,
         },
         {
           label: "修改密码",
           key: "1",
+          demo: change,
         },
       ]}
       onClick={handleMenuClick}
